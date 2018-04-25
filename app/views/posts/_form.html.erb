@@ -1,8 +1,7 @@
 <%= render "layouts/errors", :object => @post %>
 
-<%= form_for [@post] do |f| %>
-  <%= f.label :image %>
-  <%= f.text_field :image %>
+<%= form_for [@post], url: posts_path, html: { multipart: true } do |f| %>
+  <%= f.file_field :image_file_name, as: :file %>
   <br>
   <%= f.label :title %>
   <%= f.text_field :title %>
