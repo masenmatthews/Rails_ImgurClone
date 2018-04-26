@@ -1,10 +1,3 @@
-require "active_storage/engine"
-
-class Image < ActiveRecord::Base
-  has_one_attached :image
-  validates_each :image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"]}
-end
-
 class PostsController < ApplicationController
   before_action :authorize, only: [:new]
 
@@ -54,6 +47,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image_file_name, :title, :description)
+    params.require(:post).permit(:image, :title, :description)
   end
 end
